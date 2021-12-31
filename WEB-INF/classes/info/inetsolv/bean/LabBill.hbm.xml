@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.inetsolv.bean">
+    <class name="LabBill" table="HMS_LAB_BILLS">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="22" scale="0" />
+            <generator class="native">
+              <param name="sequence">HMS_LAB_BILLS_SEQ</param>
+              <param name="parameters">NOCACHE</param>
+            </generator>
+        </id>
+        <many-to-one name="user" class="User" fetch="select">
+            <column name="BILLEDUSER" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="consultant" class="User" fetch="select">
+            <column name="CONSULTANT" length="50" />
+        </many-to-one>
+        <many-to-one name="patientInfo" class="PatientInfo" fetch="select">
+            <column name="PATIENT" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="labTestReport" class="LabTestReport" fetch="select">
+            <column name="REPORT" precision="22" scale="0" />
+        </many-to-one>
+        <property name="billdate" type="java.lang.Long">
+            <column name="BILLDATE" precision="22" scale="0" />
+        </property>
+        <property name="amount" type="java.lang.Long">
+            <column name="AMOUNT" precision="22" scale="0" />
+        </property>
+        <property name="discount" type="java.lang.Long">
+            <column name="DISCOUNT" precision="22" scale="0" />
+        </property>
+        <property name="discountreason" type="java.lang.String">
+            <column name="DISCOUNTREASON" length="1000" />
+        </property>
+        <property name="netAmount" type="java.lang.Long">
+            <column name="NET_AMOUNT" precision="22" scale="0" />
+        </property>
+        <property name="paymenttype" type="java.lang.String">
+            <column name="PAYMENTTYPE" length="500" />
+        </property>
+        <property name="paymentstatus" type="java.lang.Boolean">
+            <column name="PAYMENTSTATUS" precision="1" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

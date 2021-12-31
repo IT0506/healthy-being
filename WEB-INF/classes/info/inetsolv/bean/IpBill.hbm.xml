@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.inetsolv.bean">
+ <class name="IpBill" table="HMS_IP_BILLS">
+   <id name="id" type="java.lang.Long">
+     <column name="ID" precision="22" scale="0" />
+     <generator class="native">
+       <param name="sequence">HMS_IP_BILLS_SEQ</param>
+       <param name="parameters">NOCACHE</param>
+     </generator>
+   </id>
+   <many-to-one name="user" class="User" fetch="select">
+       <column name="BILLEDUSER" precision="22" scale="0" />
+   </many-to-one>
+   <many-to-one name="consultant" class="User" fetch="select">
+       <column name="CONSULTANT" precision="22" scale="0" />
+   </many-to-one>
+   <many-to-one name="patientInfo" class="PatientInfo" fetch="select">
+       <column name="PATIENT" length="50" />
+   </many-to-one>
+   <property name="billDate" type="java.lang.Long">
+       <column name="BILLDATE" precision="22" scale="0" />
+   </property>
+   <property name="admittedDate" type="java.lang.Long">
+       <column name="ADMITTEDDATE" precision="22" scale="0" />
+   </property>
+   <property name="dischargedDate" type="java.lang.Long">
+       <column name="DISCHARGEDDATE" precision="22" scale="0" />
+   </property>
+   <property name="amount" type="java.lang.Float">
+       <column name="AMOUNT" precision="22" scale="0" />
+   </property>
+   <property name="discount" type="java.lang.Float">
+       <column name="DISCOUNT" precision="22" scale="0" />
+   </property>
+   <property name="discountreason" type="java.lang.String">
+       <column name="DISCOUNTREASON" length="1000" />
+   </property>
+   <property name="netamount" type="java.lang.Float">
+       <column name="NETAMOUNT" precision="22" scale="0" />
+   </property>
+   <property name="paymentType" type="java.lang.String">
+       <column name="PAYMENTTYPE" length="1000" />
+   </property>
+   <property name="paymentStatus" type="java.lang.Boolean">
+       <column name="PAYMENTSTATUS" precision="1" scale="0" />
+   </property>
+   <set name="roomOccupancies" inverse="true">
+       <key>
+           <column name="BILL" precision="22" scale="0" />
+       </key>
+       <one-to-many class="RoomOccupancy" />
+   </set>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.inetsolv.bean">
+    <class name="DoctorPreferences" table="HMS_DOCTOR_PREFERENCES">
+        <id name="doctorId" type="java.lang.Long">
+            <column name="DOCTORID" precision="22" scale="0" />
+            <generator class="foreign">
+              <param name="property">doctor</param>
+            </generator>
+        </id>
+        <one-to-one name="doctor" class="User" />                    
+        <property name="oPConsultationFee" type="java.lang.Long">
+            <column name="OPCONSULTATIONFEE" precision="22" scale="0" />
+        </property>
+        <property name="consultationPeriod" type="java.lang.Long">
+            <column name="CONSULTATIONPERIOD" precision="22" scale="0" />
+        </property>
+        <property name="maxvisits" type="java.lang.Long">
+            <column name="MAXVISITS" precision="22" scale="0" />
+        </property>
+        <property name="iCUConsultationFee" type="java.lang.Long">
+            <column name="ICUCONSULTATION" precision="22" scale="0" />
+        </property>
+        <property name="aCConsultationFee" type="java.lang.Long">
+            <column name="ACCONSULTATIONFEE" precision="22" scale="0" />
+        </property>
+        <property name="nonACConsultationFee" type="java.lang.Long">
+            <column name="NONACCONSULTATIONFEE" precision="22" scale="0" />
+        </property>
+        <property name="gWConsultationFee" type="java.lang.Long">
+            <column name="GWCONSULTATIONFEE" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.inetsolv.bean">
+ <class name="ChargesType" table="HMS_CHARGES_TYPE">
+  <id name="id" type="java.lang.Long">
+   <column name="ID" precision="22" scale="0" />
+   <generator class="native">
+     <param name="sequence">HMS_CHARGES_TYPE_SEQ</param>
+     <param name="parameters">NOCACHE</param>
+   </generator>
+  </id>
+  <property name="value" type="java.lang.String">
+    <column name="VALUE" length="50" />
+  </property>
+  <set name="otherCharges" inverse="true">
+   <key>
+     <column name="TYPE" length="50" />
+   </key>
+   <one-to-many class="OtherCharges" />
+  </set>
+ </class>
+</hibernate-mapping>

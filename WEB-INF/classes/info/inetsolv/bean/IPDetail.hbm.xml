@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.inetsolv.bean">
+    <class name="IPDetail" table="HMS_IP_DETAILS">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="22" scale="0" />
+            <generator class="native">
+              <param name="sequence">HMS_IP_DETAILS_SEQ</param>
+              <param name="parameters">NOCACHE</param>
+            </generator>
+        </id>
+        <many-to-one name="consultant" class="User" fetch="select">
+            <column name="CONSULTANT" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="patientInfo" class="PatientInfo" fetch="select">
+            <column name="PATIENT" length="50" />
+        </many-to-one>
+        <property name="admittedDate" type="java.lang.Long">
+            <column name="ADMITTED_DATE" precision="22" scale="0" />
+        </property>
+        <property name="dischargedDate" type="java.lang.Long">
+            <column name="DISCHARGED_DATE" precision="22" scale="0" />
+        </property>
+        <property name="operationDate" type="java.lang.Long">
+            <column name="OPERATIONDATE" precision="22" scale="0" />
+        </property>
+        <property name="status" type="java.lang.Boolean">
+            <column name="status" precision="1" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>
